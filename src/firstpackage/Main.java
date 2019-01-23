@@ -40,19 +40,32 @@ public class Main {
 	}
 	
 	public static void showMenu() {
-		Scanner kb = new Scanner(System.in);
-		
-		System.out.println("1...............Insertar registro en T_Linea_Estacion");
-		System.out.println("2...............Actualizar T_Estaciones");
-		System.out.println("3...............Visualizar Estaciones");
-		System.out.println("4...............Actualizar T_Estaciones con HQL");
-		System.out.println("5...............Visualizar Estaciones con HQL");
-		System.out.println("6...............Salir");
-		System.out.println("Teclee opción: ");
-		
+		boolean isMenushown = false;
 		String option;
 		
+		if(!isMenushown) {
+			System.out.println("1...............Insertar registro en T_Linea_Estacion");
+			System.out.println("2...............Actualizar T_Estaciones");
+			System.out.println("3...............Visualizar Estaciones");
+			System.out.println("4...............Actualizar T_Estaciones con HQL");
+			System.out.println("5...............Visualizar Estaciones con HQL");
+			System.out.println("6...............Salir");
+			System.out.println("Teclee opción: ");	
+			isMenushown = true;
+		}
+				
 		do {
+			if(!isMenushown) {
+				System.out.println("1...............Insertar registro en T_Linea_Estacion");
+				System.out.println("2...............Actualizar T_Estaciones");
+				System.out.println("3...............Visualizar Estaciones");
+				System.out.println("4...............Actualizar T_Estaciones con HQL");
+				System.out.println("5...............Visualizar Estaciones con HQL");
+				System.out.println("6...............Salir");
+				System.out.println("Teclee opción: ");	
+			}
+			
+			Scanner kb = new Scanner(System.in);
 			option = kb.nextLine();
 			
 			switch(option) {
@@ -61,21 +74,76 @@ public class Main {
 				Session session = sessionFactory.openSession();
 				TLineas lines = new TLineas();
 				TEstaciones stations = new TEstaciones();
+				TLineaEstacion stationLines = new TLineaEstacion();
 				int line, station, order;
 				stationLine = new StationLineInsertion();
 				
 				do {
-					System.out.println("Introduzca código de línea: ");
-					line = kb.nextInt();					
-				} while (!stationLine.checkLine(session, lines));
+					do {
+						System.out.println("Introduzca código de línea: ");
+						line = kb.nextInt();							
+					} while (!stationLine.checkLine(session, lines, line));
+					
+					do {
+						System.out.println("Introduzca código de estación: ");
+						station = kb.nextInt();					
+					} while (!stationLine.checkStation(session, stations, station));
+										
+				} while(stationLine.checkStationLine(session, stationLines, line, station));
+				do {
+					System.out.println("Introduzca orden: ");
+					order = kb.nextInt();					
+				} while(!stationLine.checkOrder(session, line, order));		
+				
+				stationLine = new StationLineInsertion(line, station, order);
+				session.close();
+				isMenushown = false;
+				break;
+			case "2":
+				sessionFactory = HibernateUtil.getSessionFactory();
+				session = sessionFactory.openSession();
+				stations = new TEstaciones();
+				stationLine = new StationLineInsertion();
+				
 				do {
 					System.out.println("Introduzca código de estación: ");
 					station = kb.nextInt();					
-				} while (!stationLine.checkStation(session, stations));
-					System.out.println("Introduzca orden: ");
-					order = kb.nextInt();
-					
-				stationLine = new StationLineInsertion(line, station, order);
+				} while (!stationLine.checkStation(session, stations, station));
+				
+				new StationUpdate(station);
+				isMenushown = false;
+				session.close();
+				break;
+			case "3":
+				new StationShow();
+				isMenushown = false;
+				break;
+			case "4":
+				sessionFactory = HibernateUtil.getSessionFactory();
+				session = sessionFactory.openSession();
+				stations = new TEstaciones();
+				stationLine = new StationLineInsertion();
+				
+				do {
+					System.out.println("Introduzca código de estación: ");
+					station = kb.nextInt();					
+				} while (!stationLine.checkStation(session, stations, station));
+				new HQLStationUpdate(station);
+				session.close();
+				isMenushown = false;
+				break;
+			case "5":
+				new HQLStationShow();
+				isMenushown = false;
+				break;
+			case "6":
+				System.out.println("Fin del programa.");
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Error. Teclee una opción válida");
+				isMenushown = false;
+				break;					
 			}
 		} while (!option.equals("6"));
 	}

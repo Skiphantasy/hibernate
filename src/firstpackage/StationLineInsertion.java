@@ -48,33 +48,20 @@ public class StationLineInsertion {
 		TLineas line = new TLineas();
 		TEstaciones station = new TEstaciones();
 		TLineaEstacion stationLine = new TLineaEstacion();
-		lineExist = checkLine(session, line);
-		stationExist = checkStation(session, station);
+		lineExist = checkLine(session, line, line_cod);
+		stationExist = checkStation(session, station, station_cod);
 
 		if (lineExist && stationExist) {
-			stationLineExist = checkStationLine(session, stationLine);
+			stationLineExist = checkStationLine(session, stationLine, line_cod, station_cod);
 
 			if (!stationLineExist) {
 				System.out.println("No existe aún un registro con esos datos.");
 				System.out.println("Comprobando el orden...");
-				int correctOrder = 0;
-				Query q = session.createQuery(
-						"from TLineaEstacion where cod_linea = " + line_cod + "");
-				List<TLineaEstacion> list = q.list();
-				Iterator<TLineaEstacion> iter = list.iterator();				
 				
-				while (iter.hasNext()) {
-					TLineaEstacion currentStationLine = (TLineaEstacion) iter.next();
-					correctOrder = currentStationLine.getOrden() + 1;
-				}
-				
-				if(order == correctOrder) {
-					System.out.println("El orden es correcto.");
+				if(checkOrder(session, line_cod, order)) {
 					System.out.println("Insertando registro...");
 					insertRow(session);
-				} else {
-					System.out.println("Orden incorrecto. El valor correcto debería ser " + correctOrder);
-				}
+				} 
 			}
 		}
 
@@ -94,7 +81,29 @@ public class StationLineInsertion {
 		
 	}
 	
-	public boolean checkStationLine(Session session, TLineaEstacion stationLine) {
+	public boolean checkOrder(Session session, int line_cod, int order) {
+		System.out.println("Comprobando el orden...");
+		int correctOrder = 0;
+		Query q = session.createQuery(
+				"from TLineaEstacion where cod_linea = " + line_cod + " order by orden");
+		List<TLineaEstacion> list = q.list();
+		Iterator<TLineaEstacion> iter = list.iterator();				
+		
+		while (iter.hasNext()) {
+			TLineaEstacion currentStationLine = (TLineaEstacion) iter.next();
+			correctOrder = currentStationLine.getOrden() + 1;
+		}
+		
+		if(order == correctOrder) {
+			System.out.println("El orden es correcto.");
+			return true;
+		} else {
+			System.out.println("Orden incorrecto. El valor correcto debería ser " + correctOrder);
+			return false;
+		}
+	}
+	
+	public boolean checkStationLine(Session session, TLineaEstacion stationLine, int line_cod, int station_cod) {
 		try {
 			TLineaEstacionId id = new TLineaEstacionId(line_cod, station_cod);
 			stationLine = (TLineaEstacion) session.load(TLineaEstacion.class, id);
@@ -108,7 +117,7 @@ public class StationLineInsertion {
 		}
 	}
 
-	public boolean checkLine(Session session, TLineas line) {
+	public boolean checkLine(Session session, TLineas line, int line_cod) {
 		try {
 			line = (TLineas) session.load(TLineas.class, line_cod);
 			line.getCodLinea();
@@ -121,7 +130,7 @@ public class StationLineInsertion {
 		}
 	}
 
-	public boolean checkStation(Session session, TEstaciones station) {
+	public boolean checkStation(Session session, TEstaciones station, int station_cod) {
 		try {
 			station = (TEstaciones) session.load(TEstaciones.class, station_cod);
 			station.getCodEstacion();
