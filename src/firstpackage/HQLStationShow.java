@@ -12,41 +12,45 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 /**
- * Class StationShow
+ * Class HQLStationShow
  */
-public class StationShow {
+public class HQLStationShow {
 
 	/**
-	 * Class StationShow Constructor
+	 * Class HQLStationShow Constructor
 	 */
-	public StationShow() {
+	public HQLStationShow() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		destinyTripsCount(session);
 	}
-
+	
 	private void destinyTripsCount(Session session) {
-		Criteria criteria = session.createCriteria(TEstaciones.class);
-		List<TEstaciones> stations = criteria.list();
-		Iterator<TEstaciones> it= stations.iterator();
-
-		while (it.hasNext()){
-			TEstaciones station = it.next();
-			System.out.printf("%-20s %20s\n", "COD ESTACIÃ“N: " + station.getCodEstacion(),"NOMBRE ESTACIÃ“N: " + station.getNombre());
-			System.out.printf("%-30s %2d\n", "NÃºmeros de lÃ­neas que pasan: ", station.getNumlineas());
-			System.out.printf("%-30s %2d\n", "NÃºmero de accesos que tiene: ", station.getNumaccesos());
+		Query q = session.createQuery("from TEstaciones");
+		List <TEstaciones> list = q.list();
+		Iterator <TEstaciones> iter=list.iterator();
+		
+		while (iter.hasNext()){
+			TEstaciones station = iter.next();
+			System.out.printf("%-20s %20s\n", "COD ESTACIÓN: " + station.getCodEstacion(),"NOMBRE ESTACIÓN: " + station.getNombre());
+			System.out.printf("%-30s %2d\n", "Números de líneas que pasan: ", station.getNumlineas());
+			System.out.printf("%-30s %2d\n", "Número de accesos que tiene: ", station.getNumaccesos());
 			System.out.printf("%-30s %2d\n", "NUM-Viajes-DESTINO: ",  station.getNumviajesdestino());
 			System.out.printf("%-20s %20s\n", "COD-VIAJE", "NOMBRE-VIAJE-DESTINO");
 			System.out.printf("%-40s\n", "_____________________________________________");
 			
 			if(station.getNumviajesdestino() > 0) {
-				Set<TViajes> list = station.getTViajesesForEstaciondestino();
-				Iterator<TViajes> iterator= list.iterator();
-
+				Query q1 = session.createQuery("from TViajes "
+						+ "where TEstacionesByEstaciondestino = :current_station");
+				q1.setParameter("current_station", station);
+				List <TViajes> triplist = q1.list();
+				Iterator <TViajes> iterator = triplist.iterator();
+				
 				while (iterator.hasNext()) {
 					TViajes trip = iterator.next();
 					System.out.printf("%5d %29s\n", trip.getCodViaje(), trip.getNombre());
@@ -55,4 +59,5 @@ public class StationShow {
 			System.out.println("=============================================");
 		}		
 	}
+
 }

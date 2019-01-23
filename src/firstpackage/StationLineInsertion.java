@@ -26,6 +26,9 @@ public class StationLineInsertion {
 	int line_cod;
 	int station_cod;
 	int order;
+	boolean lineExist;
+	boolean stationExist;
+	boolean stationLineExist;
 
 	public StationLineInsertion(int line_cod, int station_cod, int order) {
 		this.line_cod = line_cod;
@@ -33,11 +36,12 @@ public class StationLineInsertion {
 		this.order = order;
 		startOperations();
 	}
+	
+	public StationLineInsertion() {
+		
+	}
 
-	private void startOperations() {
-		boolean lineExist;
-		boolean stationExist;
-		boolean stationLineExist;
+	private void startOperations() {		
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		System.out.println("Comprobando si los datos son correctos...");
@@ -90,7 +94,7 @@ public class StationLineInsertion {
 		
 	}
 	
-	private boolean checkStationLine(Session session, TLineaEstacion stationLine) {
+	public boolean checkStationLine(Session session, TLineaEstacion stationLine) {
 		try {
 			TLineaEstacionId id = new TLineaEstacionId(line_cod, station_cod);
 			stationLine = (TLineaEstacion) session.load(TLineaEstacion.class, id);
@@ -104,7 +108,7 @@ public class StationLineInsertion {
 		}
 	}
 
-	private boolean checkLine(Session session, TLineas line) {
+	public boolean checkLine(Session session, TLineas line) {
 		try {
 			line = (TLineas) session.load(TLineas.class, line_cod);
 			line.getCodLinea();
@@ -117,7 +121,7 @@ public class StationLineInsertion {
 		}
 	}
 
-	private boolean checkStation(Session session, TEstaciones station) {
+	public boolean checkStation(Session session, TEstaciones station) {
 		try {
 			station = (TEstaciones) session.load(TEstaciones.class, station_cod);
 			station.getCodEstacion();
@@ -133,6 +137,18 @@ public class StationLineInsertion {
 			System.out.println("La estación " + station_cod + " no existe.");
 			return false;
 		}
+	}
+	
+	public int getStation_cod() {
+		return station_cod;
+	}
+
+	public boolean isStationExist() {
+		return stationExist;
+	}
+
+	public boolean isStationLineExist() {
+		return stationLineExist;
 	}
 
 }

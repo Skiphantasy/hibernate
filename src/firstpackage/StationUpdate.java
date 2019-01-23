@@ -8,6 +8,7 @@
 
 package firstpackage;
 
+import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +16,7 @@ import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -65,5 +67,20 @@ public class StationUpdate {
 		}
 
 		session.close();
+	}
+	
+	public static void listStations(Session session, TEstaciones station) {
+		Criteria criteria = session.createCriteria(TEstaciones.class);
+		List<TEstaciones> stations = criteria.list();
+		Iterator<TEstaciones> it= stations.iterator();
+
+		System.out.printf("%-40s\n", "LISTADO DE ESTACIONES");
+		System.out.printf("%-20s %20s\n", "COD ESTACIÓN","NOMBRE ESTACIÓN");
+		System.out.printf("%-40s\n", "_____________________________________________");
+		
+		while (it.hasNext()){
+			station = it.next();
+			System.out.printf("%7d %30s\n",station.getCodEstacion(), station.getNombre());
+		}
 	}
 }
