@@ -2,9 +2,10 @@
  * @author Tania
  * @date 22 ene. 2019
  * @version 1.0
- * @description 
+ * @description Class that allows to the user a row in T_LineaEstacion
  * 
  */
+
 package firstpackage;
 
 import org.hibernate.ObjectNotFoundException;
@@ -15,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 
+
 /**
  * Class StationLineInsertion
  */
@@ -23,13 +25,43 @@ public class StationLineInsertion {
 	/**
 	 * Class StationLineInsertion Constructor
 	 */
+	/**
+	 * @variable_name line_cod
+	 * @type int
+	 */
 	int line_cod;
+	/**
+	 * @variable_name station_cod
+	 * @type int
+	 */
 	int station_cod;
+	/**
+	 * @variable_name order
+	 * @type int
+	 */
 	int order;
+	/**
+	 * @variable_name lineExist
+	 * @type boolean
+	 */
 	boolean lineExist;
+	/**
+	 * @variable_name stationExist
+	 * @type boolean
+	 */
 	boolean stationExist;
+	/**
+	 * @variable_name stationLineExist
+	 * @type boolean
+	 */
 	boolean stationLineExist;
 
+	/**
+	 * Class StationLineInsertion Constructor
+	 * @param line_cod
+	 * @param station_cod
+	 * @param order
+	 */
 	public StationLineInsertion(int line_cod, int station_cod, int order) {
 		this.line_cod = line_cod;
 		this.station_cod = station_cod;
@@ -37,10 +69,16 @@ public class StationLineInsertion {
 		startOperations();
 	}
 	
-	public StationLineInsertion() {
-		
+	/**
+	 * Class StationLineInsertion Constructor
+	 */
+	public StationLineInsertion() {		
 	}
 
+	/**
+	 * Method that opens a session and verifies correct data
+	 * @name startOperations 
+	 */
 	private void startOperations() {		
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -66,9 +104,13 @@ public class StationLineInsertion {
 		}
 
 		session.close();
-		//System.exit(0);
 	}
 
+	/**
+	 * Method that insertes a row
+	 * @name insertRow
+	 * @param session 
+	 */
 	private void insertRow(Session session) {
 		TLineaEstacionId id = new TLineaEstacionId(line_cod, station_cod);
 		Transaction tx = session.beginTransaction();
@@ -81,6 +123,14 @@ public class StationLineInsertion {
 		
 	}
 	
+	/**
+	 * Method that checks if the order is correct
+	 * @name checkOrder
+	 * @param session
+	 * @param line_cod
+	 * @param order
+	 * @return 
+	 */
 	public boolean checkOrder(Session session, int line_cod, int order) {
 		System.out.println("Comprobando el orden...");
 		int correctOrder = 0;
@@ -103,6 +153,15 @@ public class StationLineInsertion {
 		}
 	}
 	
+	/**
+	 * Method that checks if there is a row with that station code and line code
+	 * @name checkStationLine
+	 * @param session
+	 * @param stationLine
+	 * @param line_cod
+	 * @param station_cod
+	 * @return 
+	 */
 	public boolean checkStationLine(Session session, TLineaEstacion stationLine, int line_cod, int station_cod) {
 		try {
 			TLineaEstacionId id = new TLineaEstacionId(line_cod, station_cod);
@@ -117,6 +176,14 @@ public class StationLineInsertion {
 		}
 	}
 
+	/**
+	 * Method that checks if the line exists
+	 * @name checkLine
+	 * @param session
+	 * @param line
+	 * @param line_cod
+	 * @return 
+	 */
 	public boolean checkLine(Session session, TLineas line, int line_cod) {
 		try {
 			line = (TLineas) session.load(TLineas.class, line_cod);
@@ -130,6 +197,14 @@ public class StationLineInsertion {
 		}
 	}
 
+	/**
+	 * Method that checks if the station exists
+	 * @name checkStation
+	 * @param session
+	 * @param station
+	 * @param station_cod
+	 * @return 
+	 */
 	public boolean checkStation(Session session, TEstaciones station, int station_cod) {
 		try {
 			station = (TEstaciones) session.load(TEstaciones.class, station_cod);
@@ -148,16 +223,30 @@ public class StationLineInsertion {
 		}
 	}
 	
+	/**
+	 * Method that gets station_cod
+	 * @name getStation_cod
+	 * @return 
+	 */
 	public int getStation_cod() {
 		return station_cod;
 	}
 
+	/**
+	 * Method that gets stationExist
+	 * @name isStationExist
+	 * @return 
+	 */
 	public boolean isStationExist() {
 		return stationExist;
 	}
 
+	/**
+	 * Method that gets stationLineExist
+	 * @name isStationLineExist
+	 * @return 
+	 */
 	public boolean isStationLineExist() {
 		return stationLineExist;
 	}
-
 }

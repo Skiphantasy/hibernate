@@ -2,9 +2,11 @@
  * @author Tania
  * @date 23 ene. 2019
  * @version 1.0
- * @description 
+ * @description Class that show all the stations in T_Estaciones and list the
+ * trips that has every station as destiny
  * 
  */
+
 package firstpackage;
 
 import java.util.Iterator;
@@ -29,6 +31,11 @@ public class StationShow {
 		destinyTripsCount(session);
 	}
 
+	/**
+	 * Method that iterate over the stations and over the trips of every station
+	 * @name destinyTripsCount
+	 * @param session 
+	 */
 	private void destinyTripsCount(Session session) {
 		Criteria criteria = session.createCriteria(TEstaciones.class);
 		List<TEstaciones> stations = criteria.list();
@@ -51,7 +58,10 @@ public class StationShow {
 					TViajes trip = iterator.next();
 					System.out.printf("%5d %29s\n", trip.getCodViaje(), trip.getNombre());
 				}
+			} else {
+				System.out.println("[No hay registros que mostrar]");
 			}
+			
 			System.out.println("=============================================");
 		}		
 	}

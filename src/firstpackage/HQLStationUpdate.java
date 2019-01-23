@@ -2,26 +2,35 @@
  * @author Tania
  * @date 23 ene. 2019
  * @version 1.0
- * @description 
+ * @description Class that updates the number of lines, accesses, origin trips and 
+ * destiny trips that a station has using HQL
  * 
  */
+
 package firstpackage;
 
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+
 /**
  * Class HQLStationUpdate
  */
 public class HQLStationUpdate {
 
+	/**
+	 * @variable_name station_cod
+	 * @type int
+	 */
 	int station_cod;
+	
 	/**
 	 * Class HQLStationUpdate Constructor
 	 */
@@ -30,6 +39,16 @@ public class HQLStationUpdate {
 		startOperations();
 	}
 	
+	/**
+	 * Class StationUpdate Constructor
+	 */
+	public HQLStationUpdate() {
+	}
+	
+	/**
+	 * Method that opens a session, query a station and update it
+	 * @name startOperations 
+	 */
 	private void startOperations() {
 		boolean correctStation;
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -44,7 +63,6 @@ public class HQLStationUpdate {
 			if(list.size() == 0) {
 				System.out.println("La estación " + station_cod + " no existe.");
 			} else {				
-				System.out.println("Estación correcta.");
 				tx = session.beginTransaction();		
 				station = (TEstaciones)q.uniqueResult();
 				Query q1=session.createQuery("update TEstaciones set numlineas = :lines_no," 
@@ -59,16 +77,40 @@ public class HQLStationUpdate {
 				session.update(station);
 				tx.commit();
 				System.out.println("Estación actualizada correctamente");
-			}
-			
-			correctStation = true;
+			}			
 		} catch (ObjectNotFoundException o) {
 			System.out.println("La estación " + station_cod + " no existe.");
-			correctStation = false;
 		} catch (Exception e) {
 			System.out.println("ERROR NO IDENTIFICADO");
 		}
 
 		session.close();
 	}
+	
+	/**
+	 * Method that shows all stations names and codes
+	 * @name listStations
+	 * @param session
+	 * @param station 
+	 */
+	public void listStations(Session session) {
+		Query q = session.createQuery("from TEstaciones");
+		List <TEstaciones> list = q.list();
+		Iterator<TEstaciones> it= list.iterator();
+		
+		if(list.size() == 0) {
+			System.out.println("No hay estaciones que mostrar");
+		} else {	
+		
+			System.out.printf("%-40s\n", "LISTADO DE ESTACIONES");
+			System.out.printf("%-20s %20s\n", "COD ESTACIÓN","NOMBRE ESTACIÓN");
+			System.out.printf("%-40s\n", "_____________________________________________");
+			
+			while (it.hasNext()){
+				TEstaciones station = it.next();
+				System.out.printf("%7d %30s\n",station.getCodEstacion(), station.getNombre());
+			}
+		}
+		}
+
 }

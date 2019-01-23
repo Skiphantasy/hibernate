@@ -2,7 +2,8 @@
  * @author Tania
  * @date 23 ene. 2019
  * @version 1.0
- * @description 
+ * @description Class that updates the number of lines, accesses, origin trips and 
+ * destiny trips that a station has
  * 
  */
 
@@ -32,9 +33,18 @@ public class StationUpdate {
 		this.station_cod = station_cod;
 		startOperations();
 	}
+	
+	/**
+	 * Class StationUpdate Constructor
+	 */
+	public StationUpdate() {
+	}
 
+	/**
+	 * Method that opens a session, query a station and update it
+	 * @name startOperations 
+	 */
 	private void startOperations() {
-		boolean correctStation;
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		TEstaciones station = new TEstaciones();
@@ -49,7 +59,6 @@ public class StationUpdate {
 			station.getNumlineas();
 			station.getNumviajesdestino();
 			station.getNumviajesprocedencia();
-			System.out.println("Estación correcta.");
 			tx = session.beginTransaction();
 			station.setNumlineas(Main.linesCount(session, station));
 			station.setNumaccesos(Main.accessCount(session, station));
@@ -58,10 +67,8 @@ public class StationUpdate {
 			session.update(station);
 			tx.commit();
 			System.out.println("Estación actualizada correctamente");
-			correctStation = true;
 		} catch (ObjectNotFoundException o) {
 			System.out.println("La estación " + station_cod + " no existe.");
-			correctStation = false;
 		} catch (Exception e) {
 			System.out.println("ERROR NO IDENTIFICADO");
 		}
@@ -69,7 +76,13 @@ public class StationUpdate {
 		session.close();
 	}
 	
-	public static void listStations(Session session, TEstaciones station) {
+	/**
+	 * Method that shows all stations names and codes
+	 * @name listStations
+	 * @param session
+	 * @param station 
+	 */
+	public void listStations(Session session) {
 		Criteria criteria = session.createCriteria(TEstaciones.class);
 		List<TEstaciones> stations = criteria.list();
 		Iterator<TEstaciones> it= stations.iterator();
@@ -79,7 +92,7 @@ public class StationUpdate {
 		System.out.printf("%-40s\n", "_____________________________________________");
 		
 		while (it.hasNext()){
-			station = it.next();
+			TEstaciones station = it.next();
 			System.out.printf("%7d %30s\n",station.getCodEstacion(), station.getNombre());
 		}
 	}
