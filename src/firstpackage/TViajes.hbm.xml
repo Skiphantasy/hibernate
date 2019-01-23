@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="metromalaga" dynamic-insert="false" dynamic-update="false" mutable="true" name="firstpackage.TViajes" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="t_viajes">
+        <id name="codViaje" type="java.lang.Integer">
+            <column name="cod_viaje"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="firstpackage.TEstaciones" embed-xml="true" fetch="select" insert="true" name="TEstacionesByEstacionorigen" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="estacionorigen" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="firstpackage.TEstaciones" embed-xml="true" fetch="select" insert="true" name="TEstacionesByEstaciondestino" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="estaciondestino" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="nombre" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
