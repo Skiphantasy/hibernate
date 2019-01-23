@@ -2,7 +2,7 @@
  * @author Tania
  * @date 22 ene. 2019
  * @version 1.0
- * @description 
+ * @description Class for Hibernate Utils
  * 
  */
 
@@ -12,12 +12,22 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+
 /**
  * Class HibernateUtil
  */
 public class HibernateUtil {
+	/**
+	 * @variable_name sessionFactory
+	 * @type SessionFactory
+	 */
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
+	/**
+	 * Method that builds SessionFactory
+	 * @name buildSessionFactory
+	 * @return 
+	 */
 	private static SessionFactory buildSessionFactory() {
 		try {
 			return new Configuration().configure()
@@ -28,6 +38,11 @@ public class HibernateUtil {
 		}
 	}
 
+	/**
+	 * Method that gets sessionFactory
+	 * @name getSessionFactory
+	 * @return 
+	 */
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}

@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 /**
@@ -6,15 +16,45 @@ package firstpackage;
  */
 public class TTrenes implements java.io.Serializable {
 
+	/**
+	 * @variable_name codTren
+	 * @type Integer
+	 */
 	private Integer codTren;
+	/**
+	 * @variable_name TCocheras
+	 * @type TCocheras
+	 */
 	private TCocheras TCocheras;
+	/**
+	 * @variable_name TLineas
+	 * @type TLineas
+	 */
 	private TLineas TLineas;
+	/**
+	 * @variable_name nombre
+	 * @type String
+	 */
 	private String nombre;
+	/**
+	 * @variable_name tipo
+	 * @type String
+	 */
 	private String tipo;
 
+	/**
+	 * Class TTrenes Constructor
+	 */
 	public TTrenes() {
 	}
 
+	/**
+	 * Class TTrenes Constructor
+	 * @param TCocheras
+	 * @param TLineas
+	 * @param nombre
+	 * @param tipo
+	 */
 	public TTrenes(TCocheras TCocheras, TLineas TLineas, String nombre, String tipo) {
 		this.TCocheras = TCocheras;
 		this.TLineas = TLineas;
@@ -22,42 +62,92 @@ public class TTrenes implements java.io.Serializable {
 		this.tipo = tipo;
 	}
 
+	/**
+	 * Method that gets codTren
+	 * @name getCodTren
+	 * @return 
+	 */
 	public Integer getCodTren() {
 		return this.codTren;
 	}
 
+	/**
+	 * Method that sets codTren
+	 * @name setCodTren
+	 * @param codTren 
+	 */
 	public void setCodTren(Integer codTren) {
 		this.codTren = codTren;
 	}
 
+	/**
+	 * Method that gets TCocheras
+	 * @name getTCocheras
+	 * @return 
+	 */
 	public TCocheras getTCocheras() {
 		return this.TCocheras;
 	}
 
+	/**
+	 * Method that sets TCocheras
+	 * @name setTCocheras
+	 * @param TCocheras 
+	 */
 	public void setTCocheras(TCocheras TCocheras) {
 		this.TCocheras = TCocheras;
 	}
 
+	/**
+	 * Method that gets TLineas
+	 * @name getTLineas
+	 * @return 
+	 */
 	public TLineas getTLineas() {
 		return this.TLineas;
 	}
 
+	/**
+	 * Method that sets TLineas
+	 * @name setTLineas
+	 * @param TLineas 
+	 */
 	public void setTLineas(TLineas TLineas) {
 		this.TLineas = TLineas;
 	}
 
+	/**
+	 * Method that gets nombre
+	 * @name getNombre
+	 * @return 
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	/**
+	 * Method that sets nombre
+	 * @name setNombre
+	 * @param nombre 
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Method that gets tipo
+	 * @name getTipo
+	 * @return 
+	 */
 	public String getTipo() {
 		return this.tipo;
 	}
 
+	/**
+	 * Method that sets tipo
+	 * @name setTipo
+	 * @param tipo 
+	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}

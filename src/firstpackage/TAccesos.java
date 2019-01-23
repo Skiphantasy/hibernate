@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 /**
@@ -6,40 +16,89 @@ package firstpackage;
  */
 public class TAccesos implements java.io.Serializable {
 
+	/**
+	 * @variable_name codAcceso
+	 * @type Integer
+	 */
 	private Integer codAcceso;
+	/**
+	 * @variable_name TEstaciones
+	 * @type TEstaciones
+	 */
 	private TEstaciones TEstaciones;
+	/**
+	 * @variable_name descripcion
+	 * @type String
+	 */
 	private String descripcion;
 
+	/**
+	 * Class TAccesos Constructor
+	 */
 	public TAccesos() {
 	}
 
+	/**
+	 * Class TAccesos Constructor
+	 * @param TEstaciones
+	 * @param descripcion
+	 */
 	public TAccesos(TEstaciones TEstaciones, String descripcion) {
 		this.TEstaciones = TEstaciones;
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * Method that gets codAcceso
+	 * @name getCodAcceso
+	 * @return 
+	 */
 	public Integer getCodAcceso() {
 		return this.codAcceso;
 	}
 
+	/**
+	 * Method that sets codAcceso
+	 * @name setCodAcceso
+	 * @param codAcceso 
+	 */
 	public void setCodAcceso(Integer codAcceso) {
 		this.codAcceso = codAcceso;
 	}
 
+	/**
+	 * Method that gets TEstaciones
+	 * @name getTEstaciones
+	 * @return 
+	 */
 	public TEstaciones getTEstaciones() {
 		return this.TEstaciones;
 	}
 
+	/**
+	 * Method that sets TEstaciones
+	 * @name setTEstaciones
+	 * @param TEstaciones 
+	 */
 	public void setTEstaciones(TEstaciones TEstaciones) {
 		this.TEstaciones = TEstaciones;
 	}
 
+	/**
+	 * Method that gets descripcion
+	 * @name getDescripcion
+	 * @return 
+	 */
 	public String getDescripcion() {
 		return this.descripcion;
 	}
 
+	/**
+	 * Method that gets descripcion
+	 * @name setDescripcion
+	 * @param descripcion 
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 }

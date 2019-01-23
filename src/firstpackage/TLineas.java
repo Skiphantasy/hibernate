@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 import java.util.HashSet;
@@ -9,54 +19,122 @@ import java.util.Set;
  */
 public class TLineas implements java.io.Serializable {
 
+	/**
+	 * @variable_name codLinea
+	 * @type Integer
+	 */
 	private Integer codLinea;
+	/**
+	 * @variable_name nombre
+	 * @type String
+	 */
 	private String nombre;
+	/**
+	 * @variable_name TLineaEstacions
+	 * @type Set
+	 */
 	private Set TLineaEstacions = new HashSet(0);
+	/**
+	 * @variable_name TTreneses
+	 * @type Set
+	 */
 	private Set TTreneses = new HashSet(0);
 
+	/**
+	 * Class TLineas Constructor
+	 */
 	public TLineas() {
 	}
 
+	/**
+	 * Class TLineas Constructor
+	 * @param nombre
+	 */
 	public TLineas(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Class TLineas Constructor
+	 * @param nombre
+	 * @param TLineaEstacions
+	 * @param TTreneses
+	 */
 	public TLineas(String nombre, Set TLineaEstacions, Set TTreneses) {
 		this.nombre = nombre;
 		this.TLineaEstacions = TLineaEstacions;
 		this.TTreneses = TTreneses;
 	}
 
+	/**
+	 * Method that gets codLinea
+	 * @name getCodLinea
+	 * @return 
+	 */
 	public Integer getCodLinea() {
 		return this.codLinea;
 	}
 
+	/**
+	 * Method that sets codLinea
+	 * @name setCodLinea
+	 * @param codLinea 
+	 */
 	public void setCodLinea(Integer codLinea) {
 		this.codLinea = codLinea;
 	}
 
+	/**
+	 * Method that gets nombre
+	 * @name getNombre
+	 * @return 
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	/**
+	 * Method that sets nombre
+	 * @name setNombre
+	 * @param nombre 
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Method that gets TLineaEstacions
+	 * @name getTLineaEstacions
+	 * @return 
+	 */
 	public Set getTLineaEstacions() {
 		return this.TLineaEstacions;
 	}
 
+	/**
+	 * Method that sets TLineaEstacions
+	 * @name setTLineaEstacions
+	 * @param TLineaEstacions 
+	 */
 	public void setTLineaEstacions(Set TLineaEstacions) {
 		this.TLineaEstacions = TLineaEstacions;
 	}
 
+	/**
+	 * Method that gets TTreneses
+	 * @name getTTreneses
+	 * @return 
+	 */
 	public Set getTTreneses() {
 		return this.TTreneses;
 	}
 
+	/**
+	 * Method that sets TTreneses
+	 * @name setTTreneses
+	 * @param TTreneses 
+	 */
 	public void setTTreneses(Set TTreneses) {
 		this.TTreneses = TTreneses;
 	}
-
 }

@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 /**
@@ -6,48 +16,113 @@ package firstpackage;
  */
 public class TViajes implements java.io.Serializable {
 
+	/**
+	 * @variable_name codViaje
+	 * @type Integer
+	 */
 	private Integer codViaje;
+	/**
+	 * @variable_name TEstacionesByEstacionorigen
+	 * @type TEstaciones
+	 */
 	private TEstaciones TEstacionesByEstacionorigen;
+	/**
+	 * @variable_name TEstacionesByEstaciondestino
+	 * @type TEstaciones
+	 */
 	private TEstaciones TEstacionesByEstaciondestino;
+	/**
+	 * @variable_name nombre
+	 * @type String
+	 */
 	private String nombre;
 
+	/**
+	 * Class TViajes Constructor
+	 */
 	public TViajes() {
 	}
 
+	/**
+	 * Class TViajes Constructor
+	 * @param TEstacionesByEstacionorigen
+	 * @param TEstacionesByEstaciondestino
+	 * @param nombre
+	 */
 	public TViajes(TEstaciones TEstacionesByEstacionorigen, TEstaciones TEstacionesByEstaciondestino, String nombre) {
 		this.TEstacionesByEstacionorigen = TEstacionesByEstacionorigen;
 		this.TEstacionesByEstaciondestino = TEstacionesByEstaciondestino;
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Method that gets codViaje
+	 * @name getCodViaje
+	 * @return 
+	 */
 	public Integer getCodViaje() {
 		return this.codViaje;
 	}
 
+	/**
+	 * Method that sets codViaje
+	 * @name setCodViaje
+	 * @param codViaje 
+	 */
 	public void setCodViaje(Integer codViaje) {
 		this.codViaje = codViaje;
 	}
 
+	/**
+	 * Method that gets TEstacionesByEstacionorigen
+	 * @name getTEstacionesByEstacionorigen
+	 * @return 
+	 */
 	public TEstaciones getTEstacionesByEstacionorigen() {
 		return this.TEstacionesByEstacionorigen;
 	}
 
+	/**
+	 * Method that sets TEstacionesByEstacionorigen
+	 * @name setTEstacionesByEstacionorigen
+	 * @param TEstacionesByEstacionorigen 
+	 */
 	public void setTEstacionesByEstacionorigen(TEstaciones TEstacionesByEstacionorigen) {
 		this.TEstacionesByEstacionorigen = TEstacionesByEstacionorigen;
 	}
 
+	/**
+	 * Method that gets TEstacionesByEstaciondestino
+	 * @name getTEstacionesByEstaciondestino
+	 * @return 
+	 */
 	public TEstaciones getTEstacionesByEstaciondestino() {
 		return this.TEstacionesByEstaciondestino;
 	}
 
+	/**
+	 * Method that sets TEstacionesByEstaciondestino
+	 * @name setTEstacionesByEstaciondestino
+	 * @param TEstacionesByEstaciondestino 
+	 */
 	public void setTEstacionesByEstaciondestino(TEstaciones TEstacionesByEstaciondestino) {
 		this.TEstacionesByEstaciondestino = TEstacionesByEstaciondestino;
 	}
 
+	/**
+	 * Method that gets nombre
+	 * @name getNombre
+	 * @return 
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	/**
+	 * Method that sets nombre
+	 * @name setNombre
+	 * @param nombre 
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

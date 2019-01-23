@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 import java.util.HashSet;
@@ -9,55 +19,124 @@ import java.util.Set;
  */
 public class TCocheras implements java.io.Serializable {
 
+	/**
+	 * @variable_name codCochera
+	 * @type Integer
+	 */
 	private Integer codCochera;
+	/**
+	 * @variable_name nombre
+	 * @type String
+	 */
 	private String nombre;
+	/**
+	 * @variable_name direccion
+	 * @type String
+	 */
 	private String direccion;
+	/**
+	 * @variable_name TTreneses
+	 * @type Set
+	 */
 	private Set TTreneses = new HashSet(0);
 
+	/**
+	 * Class TCocheras Constructor
+	 */
 	public TCocheras() {
 	}
 
+	/**
+	 * Class TCocheras Constructor
+	 * @param nombre
+	 * @param direccion
+	 */
 	public TCocheras(String nombre, String direccion) {
 		this.nombre = nombre;
 		this.direccion = direccion;
 	}
 
+	/**
+	 * Class TCocheras Constructor
+	 * @param nombre
+	 * @param direccion
+	 * @param TTreneses
+	 */
 	public TCocheras(String nombre, String direccion, Set TTreneses) {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.TTreneses = TTreneses;
 	}
 
+	/**
+	 * Method that gets codCochera
+	 * @name getCodCochera
+	 * @return 
+	 */
 	public Integer getCodCochera() {
 		return this.codCochera;
 	}
 
+	/**
+	 * Method that sets codCochera
+	 * @name setCodCochera
+	 * @param codCochera 
+	 */
 	public void setCodCochera(Integer codCochera) {
 		this.codCochera = codCochera;
 	}
 
+	/**
+	 * Method that gets nombre
+	 * @name getNombre
+	 * @return 
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	/**
+	 * Method that sets nombre
+	 * @name setNombre
+	 * @param nombre 
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Method that gets direccion
+	 * @name getDireccion
+	 * @return 
+	 */
 	public String getDireccion() {
 		return this.direccion;
 	}
 
+	/**
+	 * Method that sets direccion
+	 * @name setDireccion
+	 * @param direccion 
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * Method that gets TTreneses
+	 * @name getTTreneses
+	 * @return 
+	 */
 	public Set getTTreneses() {
 		return this.TTreneses;
 	}
 
+	/**
+	 * Method that sets TTreneses
+	 * @name setTTreneses
+	 * @param TTreneses 
+	 */
 	public void setTTreneses(Set TTreneses) {
 		this.TTreneses = TTreneses;
 	}
-
 }

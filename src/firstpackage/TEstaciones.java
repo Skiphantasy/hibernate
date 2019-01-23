@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 import java.util.HashSet;
@@ -9,21 +19,77 @@ import java.util.Set;
  */
 public class TEstaciones implements java.io.Serializable {
 
+	/**
+	 * @variable_name codEstacion
+	 * @type Integer
+	 */
 	private Integer codEstacion;
+	/**
+	 * @variable_name nombre
+	 * @type String
+	 */
 	private String nombre;
+	/**
+	 * @variable_name direccion
+	 * @type String
+	 */
 	private String direccion;
+	/**
+	 * @variable_name numaccesos
+	 * @type int
+	 */
 	private int numaccesos;
+	/**
+	 * @variable_name numlineas
+	 * @type int
+	 */
 	private int numlineas;
+	/**
+	 * @variable_name numviajesdestino
+	 * @type int
+	 */
 	private int numviajesdestino;
+	/**
+	 * @variable_name numviajesprocedencia
+	 * @type int
+	 */
 	private int numviajesprocedencia;
+	/**
+	 * @variable_name TViajesesForEstacionorigen
+	 * @type Set
+	 */
 	private Set TViajesesForEstacionorigen = new HashSet(0);
+	/**
+	 * @variable_name TViajesesForEstaciondestino
+	 * @type Set
+	 */
 	private Set TViajesesForEstaciondestino = new HashSet(0);
+	/**
+	 * @variable_name TLineaEstacions
+	 * @type Set
+	 */
 	private Set TLineaEstacions = new HashSet(0);
+	/**
+	 * @variable_name TAccesoses
+	 * @type Set
+	 */
 	private Set TAccesoses = new HashSet(0);
 
+	/**
+	 * Class TEstaciones Constructor
+	 */
 	public TEstaciones() {
 	}
 
+	/**
+	 * Class TEstaciones Constructor
+	 * @param nombre
+	 * @param direccion
+	 * @param numaccesos
+	 * @param numlineas
+	 * @param numviajesdestino
+	 * @param numviajesprocedencia
+	 */
 	public TEstaciones(String nombre, String direccion, int numaccesos, int numlineas, int numviajesdestino,
 			int numviajesprocedencia) {
 		this.nombre = nombre;
@@ -34,6 +100,19 @@ public class TEstaciones implements java.io.Serializable {
 		this.numviajesprocedencia = numviajesprocedencia;
 	}
 
+	/**
+	 * Class TEstaciones Constructor
+	 * @param nombre
+	 * @param direccion
+	 * @param numaccesos
+	 * @param numlineas
+	 * @param numviajesdestino
+	 * @param numviajesprocedencia
+	 * @param TViajesesForEstacionorigen
+	 * @param TViajesesForEstaciondestino
+	 * @param TLineaEstacions
+	 * @param TAccesoses
+	 */
 	public TEstaciones(String nombre, String direccion, int numaccesos, int numlineas, int numviajesdestino,
 			int numviajesprocedencia, Set TViajesesForEstacionorigen, Set TViajesesForEstaciondestino,
 			Set TLineaEstacions, Set TAccesoses) {
@@ -49,92 +128,201 @@ public class TEstaciones implements java.io.Serializable {
 		this.TAccesoses = TAccesoses;
 	}
 
+	/**
+	 * Method that gets codEstacion
+	 * @name getCodEstacion
+	 * @return 
+	 */
 	public Integer getCodEstacion() {
 		return this.codEstacion;
 	}
 
+	/**
+	 * Method that sets codEstacion
+	 * @name setCodEstacion
+	 * @param codEstacion 
+	 */
 	public void setCodEstacion(Integer codEstacion) {
 		this.codEstacion = codEstacion;
 	}
 
+	/**
+	 * Method that gets nombre
+	 * @name getNombre
+	 * @return 
+	 */
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	/**
+	 * Method that sets nombre
+	 * @name setNombre
+	 * @param nombre 
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Method that gets direccion
+	 * @name getDireccion
+	 * @return 
+	 */
 	public String getDireccion() {
 		return this.direccion;
 	}
 
+	/**
+	 * Method that sets direccion
+	 * @name setDireccion
+	 * @param direccion 
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * Method that gets numaccesos
+	 * @name getNumaccesos
+	 * @return 
+	 */
 	public int getNumaccesos() {
 		return this.numaccesos;
 	}
 
+	/**
+	 * Method that sets numaccesos
+	 * @name setNumaccesos
+	 * @param numaccesos 
+	 */
 	public void setNumaccesos(int numaccesos) {
 		this.numaccesos = numaccesos;
 	}
 
+	/**
+	 * Method that gets numlineas
+	 * @name getNumlineas
+	 * @return 
+	 */
 	public int getNumlineas() {
 		return this.numlineas;
 	}
 
+	/**
+	 * Method that sets numlineas
+	 * @name setNumlineas
+	 * @param numlineas 
+	 */
 	public void setNumlineas(int numlineas) {
 		this.numlineas = numlineas;
 	}
 
+	/**
+	 * Method that gets numviajesdestino
+	 * @name getNumviajesdestino
+	 * @return 
+	 */
 	public int getNumviajesdestino() {
 		return this.numviajesdestino;
 	}
 
+	/**
+	 * Method that sets numviajesdestino
+	 * @name setNumviajesdestino
+	 * @param numviajesdestino 
+	 */
 	public void setNumviajesdestino(int numviajesdestino) {
 		this.numviajesdestino = numviajesdestino;
 	}
 
+	/**
+	 * Method that gets numviajesprocedencia
+	 * @name getNumviajesprocedencia
+	 * @return 
+	 */
 	public int getNumviajesprocedencia() {
 		return this.numviajesprocedencia;
 	}
 
+	/**
+	 * Method that sets numviajesprocedencia
+	 * @name setNumviajesprocedencia
+	 * @param numviajesprocedencia 
+	 */
 	public void setNumviajesprocedencia(int numviajesprocedencia) {
 		this.numviajesprocedencia = numviajesprocedencia;
 	}
 
+	/**
+	 * Method that gets TViajesesForEstacionorigen
+	 * @name getTViajesesForEstacionorigen
+	 * @return 
+	 */
 	public Set getTViajesesForEstacionorigen() {
 		return this.TViajesesForEstacionorigen;
 	}
 
+	/**
+	 * Method that sets TViajesesForEstacionorigen
+	 * @name setTViajesesForEstacionorigen
+	 * @param TViajesesForEstacionorigen 
+	 */
 	public void setTViajesesForEstacionorigen(Set TViajesesForEstacionorigen) {
 		this.TViajesesForEstacionorigen = TViajesesForEstacionorigen;
 	}
 
+	/**
+	 * Method that gets TViajesesForEstaciondestino
+	 * @name getTViajesesForEstaciondestino
+	 * @return 
+	 */
 	public Set getTViajesesForEstaciondestino() {
 		return this.TViajesesForEstaciondestino;
 	}
 
+	/**
+	 * Method that sets TViajesesForEstaciondestino
+	 * @name setTViajesesForEstaciondestino
+	 * @param TViajesesForEstaciondestino 
+	 */
 	public void setTViajesesForEstaciondestino(Set TViajesesForEstaciondestino) {
 		this.TViajesesForEstaciondestino = TViajesesForEstaciondestino;
 	}
 
+	/**
+	 * Method that gets TLineaEstacions
+	 * @name getTLineaEstacions
+	 * @return 
+	 */
 	public Set getTLineaEstacions() {
 		return this.TLineaEstacions;
 	}
 
+	/**
+	 * Method that sets TLineaEstacions
+	 * @name setTLineaEstacions
+	 * @param TLineaEstacions 
+	 */
 	public void setTLineaEstacions(Set TLineaEstacions) {
 		this.TLineaEstacions = TLineaEstacions;
 	}
 
+	/**
+	 * Method that gets TAccesoses
+	 * @name getTAccesoses
+	 * @return 
+	 */
 	public Set getTAccesoses() {
 		return this.TAccesoses;
 	}
 
+	/**
+	 * Method that sets TAccesoses
+	 * @name setTAccesoses
+	 * @param TAccesoses 
+	 */
 	public void setTAccesoses(Set TAccesoses) {
 		this.TAccesoses = TAccesoses;
 	}
-
 }

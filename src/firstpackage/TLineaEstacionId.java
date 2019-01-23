@@ -1,4 +1,14 @@
+/**
+ * @author Tania
+ * @date 22 ene. 2019
+ * @version 1.0
+ * @description Class generated for Hibernate
+ * 
+ */
+
 package firstpackage;
+
+
 // Generated 21-ene-2019 13:18:21 by Hibernate Tools 5.0.6.Final
 
 /**
@@ -6,33 +16,76 @@ package firstpackage;
  */
 public class TLineaEstacionId implements java.io.Serializable {
 
+	/**
+	 * @variable_name codLinea
+	 * @type int
+	 */
 	private int codLinea;
+	/**
+	 * @variable_name codEstacion
+	 * @type int
+	 */
 	private int codEstacion;
 
+	/**
+	 * Class TLineaEstacionId Constructor
+	 */
 	public TLineaEstacionId() {
 	}
 
+	/**
+	 * Class TLineaEstacionId Constructor
+	 * @param codLinea
+	 * @param codEstacion
+	 */
 	public TLineaEstacionId(int codLinea, int codEstacion) {
 		this.codLinea = codLinea;
 		this.codEstacion = codEstacion;
 	}
 
+	/**
+	 * Method
+	 * @name getCodLinea
+	 * @return 
+	 */
 	public int getCodLinea() {
 		return this.codLinea;
 	}
 
+	/**
+	 * Method
+	 * @name setCodLinea
+	 * @param codLinea 
+	 */
 	public void setCodLinea(int codLinea) {
 		this.codLinea = codLinea;
 	}
 
+	/**
+	 * Method
+	 * @name getCodEstacion
+	 * @return 
+	 */
 	public int getCodEstacion() {
 		return this.codEstacion;
 	}
 
+	/**
+	 * Method
+	 * @name setCodEstacion
+	 * @param codEstacion 
+	 */
 	public void setCodEstacion(int codEstacion) {
 		this.codEstacion = codEstacion;
 	}
 
+	/**
+	 * Method that verifies primary key
+	 * @name equals
+	 * @param other
+	 * @return 
+	 * @overriden @see java.lang.Object#equals(java.lang.Object)
+	 */
 	public boolean equals(Object other) {
 		if ((this == other))
 			return true;
@@ -45,6 +98,12 @@ public class TLineaEstacionId implements java.io.Serializable {
 		return (this.getCodLinea() == castOther.getCodLinea()) && (this.getCodEstacion() == castOther.getCodEstacion());
 	}
 
+	/**
+	 * Method for hashCode
+	 * @name hashCode
+	 * @return 
+	 * @overriden @see java.lang.Object#hashCode()
+	 */
 	public int hashCode() {
 		int result = 17;
 
@@ -52,5 +111,4 @@ public class TLineaEstacionId implements java.io.Serializable {
 		result = 37 * result + this.getCodEstacion();
 		return result;
 	}
-
 }
