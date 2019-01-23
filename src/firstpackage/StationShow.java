@@ -28,7 +28,7 @@ public class StationShow {
 		Session session = sessionFactory.openSession();
 		destinyTripsCount(session);
 	}
-	
+
 	private void destinyTripsCount(Session session) {
 		Criteria criteria = session.createCriteria(TEstaciones.class);
 		List<TEstaciones> stations = criteria.list();
@@ -36,24 +36,24 @@ public class StationShow {
 
 		while (it.hasNext()){
 			TEstaciones station = it.next();
-			System.out.println("COD ESTACIÓN: " + station.getCodEstacion());
-			System.out.println("NOMBRE ESTACIÓN: " + station.getNombre());
-			System.out.println("Números de líneas que pasan: " + Main.linesCount(session, station));
-			System.out.println("Número de accesos que tiene: " + Main.accessCount(session, station));
-			System.out.println("NUM-Viajes-DESTINO:" + Main.destinyTripsCount(session, station));
-			System.out.println("___________________________________");
-			System.out.println("COD-VIAJE  NOMBRE-VIAJE-DESTINO"); 
-			Set<TViajes> list = station.getTViajesesForEstaciondestino();
-			Iterator<TViajes> iterator= list.iterator();
+			System.out.printf("%-20s %20s\n", "COD ESTACIÓN: " + station.getCodEstacion(),"NOMBRE ESTACIÓN: " + station.getNombre());
+			System.out.printf("%-30s %2d\n", "Números de líneas que pasan: ", station.getNumlineas());
+			System.out.printf("%-30s %2d\n", "Número de accesos que tiene: ", station.getNumaccesos());
+			System.out.printf("%-30s %2d\n", "NUM-Viajes-DESTINO: ",  station.getNumviajesdestino());
+			System.out.printf("%-20s %20s\n", "COD-VIAJE", "NOMBRE-VIAJE-DESTINO");
+			System.out.printf("%-40s\n", "_____________________________________________");
+			
+			if(station.getNumviajesdestino() > 0) {
+				Set<TViajes> list = station.getTViajesesForEstaciondestino();
+				Iterator<TViajes> iterator= list.iterator();
 
-			while (iterator.hasNext()){
-			TViajes trip = iterator.next();
-			System.out.println(trip.getCodViaje() + "    " + trip.getNombre());
+				while (iterator.hasNext()) {
+					TViajes trip = iterator.next();
+					System.out.printf("%5d %29s\n", trip.getCodViaje(), trip.getNombre());
+				}
 			}
-			System.out.println("=================================");
-		}
-		
-		
+			System.out.println("=============================================");
+		}		
 	}
 	
 

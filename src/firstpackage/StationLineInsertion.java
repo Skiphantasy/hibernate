@@ -57,8 +57,7 @@ public class StationLineInsertion {
 				Query q = session.createQuery(
 						"from TLineaEstacion where cod_linea = " + line_cod + "");
 				List<TLineaEstacion> list = q.list();
-				Iterator<TLineaEstacion> iter = list.iterator();
-				//System.out.println("Número de Líneas de estación: " + list.size());
+				Iterator<TLineaEstacion> iter = list.iterator();				
 				
 				while (iter.hasNext()) {
 					TLineaEstacion currentStationLine = (TLineaEstacion) iter.next();
